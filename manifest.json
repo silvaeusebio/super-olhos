@@ -1,0 +1,9 @@
+{
+  "name": "Super Olhos — Ópticas Eusébio",
+  "short_name": "Super Olhos",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "background_color": "#e3f4ff",
+  "theme_color": "#14213d",
+  "icons": [{ "src": "img/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

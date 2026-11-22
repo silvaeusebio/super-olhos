@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#14213d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="img/icon.svg">
+<title>Super Olhos — Ópticas Eusébio</title>
+<link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+
+<!-- Início -->
+<section id="home" class="screen active">
+  <div class="home-brand" id="brand-hold"><img src="img/logo.png" alt="Ópticas Eusébio" draggable="false"></div>
+  <div class="home-inner">
+    <div id="mascot" class="mascot bob"></div>
+    <h1 class="title">Super Olhos</h1>
+    <p class="subtitle">Jogos divertidos para olhos espertos!</p>
+    <button id="play-btn" class="big-btn pulse">▶ JOGAR</button>
+  </div>
+  <button id="fs-btn" class="icon-btn corner" aria-label="Ecrã inteiro">⛶</button>
+  <div class="foot">www.opticaseusebio.pt</div>
+</section>
+
+<!-- Escolha de jogo -->
+<section id="hub" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="home" aria-label="Início">🏠</button>
+    <h2>Escolhe um jogo!</h2>
+    <img class="logo-mini" src="img/logo.png" alt="">
+  </header>
+  <div id="hub-grid" class="hub-grid"></div>
+</section>
+
+<!-- Jogo -->
+<section id="game" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="hub" aria-label="Voltar">⬅</button>
+    <h2 id="game-title"></h2>
+    <button class="icon-btn" id="say-btn" aria-label="Ouvir instruções">🔊</button>
+  </header>
+  <div id="stage" class="stage"></div>
+</section>
+
+<!-- Roda da sorte -->
+<section id="wheel" class="screen">
+  <h2 class="wheel-title">🎡 Roda da Sorte!</h2>
+  <div class="wheel-box">
+    <svg class="pointer" viewBox="0 0 60 70"><path d="M30,68 L4,10 Q30,-8 56,10Z" fill="#e53935" stroke="#fff" stroke-width="5" stroke-linejoin="round"/></svg>
+    <canvas id="wheel-cv" width="720" height="720"></canvas>
+    <button id="spin-btn" class="spin-center">RODAR</button>
+  </div>
+  <p class="wheel-hint" id="wheel-hint">Toca em RODAR!</p>
+</section>
+
+<!-- Prémio -->
+<section id="prize" class="screen">
+  <div class="prize-inner">
+    <div class="prize-small">Parabéns! Ganhaste</div>
+    <div id="prize-icon" class="prize-icon"></div>
+    <div id="prize-name" class="prize-name"></div>
+    <p class="prize-msg">Mostra este ecrã a um adulto da loja para receberes o teu prémio 🎁</p>
+    <div class="prize-logo"><img src="img/logo.png" alt="Ópticas Eusébio"></div>
+    <div class="btn-row" style="margin-top:2vmin">
+      <button id="prize-done" class="big-btn green">✅ Novo jogador</button>
+      <button id="prize-more" class="big-btn blue small">🎮 Continuar a jogar</button>
+    </div>
+  </div>
+</section>
+
+<!-- Resultado de um jogo -->
+<div id="result" class="overlay hidden">
+  <div class="card-pop">
+    <h2 id="res-title"></h2>
+    <div id="res-score" class="res-score"></div>
+    <div id="res-stars" class="stars"></div>
+    <p id="res-msg"></p>
+    <div id="res-btns" class="btn-col"></div>
+  </div>
+</div>
+
+<!-- Painel da loja (segurar o logótipo 3 segundos) -->
+<div id="admin" class="overlay hidden">
+  <div class="admin-card">
+    <h2>⚙️ Painel da loja</h2>
+    <table>
+      <thead><tr><th>Prémio</th><th>% na roda</th><th>Já saíram</th></tr></thead>
+      <tbody id="adm-prizes"></tbody>
+    </table>
+    <p class="warn" id="adm-warn"></p>
+    <p>Jogadores que rodaram a roda: <b id="adm-players">0</b></p>
+    <label><input type="checkbox" id="adm-sound"> Som</label>
+    <label><input type="checkbox" id="adm-voice"> Voz a ler as instruções</label>
+    <div class="btn-row" style="justify-content:flex-start">
+      <button id="adm-reset">Zerar contagens</button>
+      <button id="adm-close" class="primary">Guardar e fechar</button>
+    </div>
+    <p class="small">Para abrir este painel: no ecrã inicial, segura o dedo no logótipo durante 3 segundos.<br>
+      Se o jogador sair a meio, o jogo volta sozinho ao início após 2 minutos sem toques.</p>
+  </div>
+</div>
+
+<div id="confetti" class="confetti"></div>
+
+<script src="js/art.js?v=5"></script>
+<script src="js/core.js?v=5"></script>
+<script src="js/games/apanha.js?v=5"></script>
+<script src="js/games/memoria.js?v=5"></script>
+<script src="js/games/veste.js?v=5"></script>
+<script src="js/games/aguia.js?v=5"></script>
+<script src="js/games/protege.js?v=5"></script>
+<script src="js/games/cores.js?v=5"></script>
+<script src="js/games/diferencas.js?v=5"></script>
+<script src="js/wheel.js?v=5"></script>
+<script>App.init();</script>
+</body>
+</html>

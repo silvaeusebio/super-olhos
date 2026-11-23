@@ -9,7 +9,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="img/icon.svg">
 <title>Super Olhos — Ópticas Eusébio</title>
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
 
@@ -26,11 +26,24 @@
   <div class="foot">www.opticaseusebio.pt</div>
 </section>
 
+<!-- Crianças ou adultos -->
+<section id="choose" class="screen">
+  <header class="bar">
+    <button class="icon-btn" data-go="home" aria-label="Início">🏠</button>
+    <h2>Quem vai jogar?</h2>
+    <img class="logo-mini" src="img/logo.png" alt="">
+  </header>
+  <div class="choose-grid">
+    <button class="tile choose-tile" data-group="criancas" style="background:linear-gradient(160deg,#ffb74d,#fb8c00)"><div class="ti">👧👦</div><div class="tn">Crianças</div></button>
+    <button class="tile choose-tile" data-group="adultos" style="background:linear-gradient(160deg,#3949ab,#14213d)"><div class="ti">👩👨</div><div class="tn">Adultos</div></button>
+  </div>
+</section>
+
 <!-- Escolha de jogo -->
 <section id="hub" class="screen">
   <header class="bar">
-    <button class="icon-btn" data-go="home" aria-label="Início">🏠</button>
-    <h2>Escolhe um jogo!</h2>
+    <button class="icon-btn" data-go="choose" aria-label="Voltar">⬅</button>
+    <h2 id="hub-title">Escolhe um jogo!</h2>
     <img class="logo-mini" src="img/logo.png" alt="">
   </header>
   <div id="hub-grid" class="hub-grid"></div>
@@ -106,16 +119,19 @@
 
 <div id="confetti" class="confetti"></div>
 
-<script src="js/art.js?v=5"></script>
-<script src="js/core.js?v=5"></script>
-<script src="js/games/apanha.js?v=5"></script>
-<script src="js/games/memoria.js?v=5"></script>
-<script src="js/games/veste.js?v=5"></script>
-<script src="js/games/aguia.js?v=5"></script>
-<script src="js/games/protege.js?v=5"></script>
-<script src="js/games/cores.js?v=5"></script>
-<script src="js/games/diferencas.js?v=5"></script>
-<script src="js/wheel.js?v=5"></script>
+<script src="js/lib/matter.min.js?v=7"></script>
+<script src="js/art.js?v=7"></script>
+<script src="js/core.js?v=7"></script>
+<script src="js/games/apanha.js?v=7"></script>
+<script src="js/games/memoria.js?v=7"></script>
+<script src="js/games/veste.js?v=7"></script>
+<script src="js/games/aguia.js?v=7"></script>
+<script src="js/games/protege.js?v=7"></script>
+<script src="js/games/cores.js?v=7"></script>
+<script src="js/games/diferencas.js?v=7"></script>
+<script src="js/games/torre.js?v=9"></script>
+<script src="js/games/quiz.js?v=7"></script>
+<script src="js/wheel.js?v=7"></script>
 <script>App.init();</script>
 </body>
 </html>

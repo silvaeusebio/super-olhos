@@ -117,7 +117,7 @@ function floatText(parent, x, y, text, color = '#2e7d32') {
 // ---------- Aplicação ----------
 const App = {
   player: { played: 0, spun: false, stars: {} },
-  game: null, cleanup: null, session: null,
+  game: null, cleanup: null, session: null, group: 'criancas',
   lastTouch: Date.now(),
 
   init() {
@@ -130,9 +130,12 @@ const App = {
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('dblclick', e => e.preventDefault());
 
-    $('#play-btn').onclick = () => { Sfx.play('tap'); this.goHub(); Voice.say('Escolhe um jogo!'); };
+    $('#play-btn').onclick = () => { Sfx.play('tap'); this.goChoose(); };
     document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => {
-      Sfx.play('tap'); b.dataset.go === 'home' ? this.goHome() : this.goHub();
+      Sfx.play('tap'); const g = b.dataset.go; g === 'home' ? this.goHome() : g === 'choose' ? this.goChoose() : this.goHub();
+    });
+    document.querySelectorAll('[data-group]').forEach(b => b.onclick = () => {
+      Sfx.play('tap'); this.group = b.dataset.group; this.goHub(); Voice.say('Escolhe um jogo!');
     });
     $('#say-btn').onclick = () => this.game && Voice.say(this.game.say);
     $('#fs-btn').onclick = () => {
@@ -173,6 +176,11 @@ const App = {
     this.show('home');
   },
 
+  goChoose() {
+    this.stopGame();
+    this.show('choose');
+  },
+
   goHub() {
     this.stopGame();
     this.renderHub();
@@ -181,7 +189,8 @@ const App = {
 
   renderHub() {
     const g = $('#hub-grid'); g.innerHTML = '';
-    GAMES.forEach(game => {
+    $('#hub-title').textContent = this.group === 'adultos' ? 'Jogos para adultos' : 'Jogos para crianças';
+    GAMES.filter(game => (game.group || 'criancas') === this.group).forEach(game => {
       const b = document.createElement('button');
       b.className = 'tile'; b.style.background = `linear-gradient(160deg, ${game.color}, ${game.color2 || game.color})`;
       b.innerHTML = `<div class="ti">${Art.icon(game.id) || game.icon}</div><div class="tn">${game.name}</div>`;

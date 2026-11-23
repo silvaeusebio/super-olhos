@@ -243,5 +243,37 @@ canvas.full { position: absolute; inset: 0; width: 100%; height: 100%; touch-act
 .diff .hintbtn { position: absolute; right: 2vmin; top: -56px; }
 .dress.portrait .pv { flex: 0 0 40%; }
 .dress.portrait .ctl { flex: 1; }
-.res-score { font-size: clamp(26px, 5.5vmin, 46px); font-weight: 900; color: var(--navy); margin: .5vmin 0 1vmin; }
+.res-score { white-space: pre-line; font-size: clamp(26px, 5.5vmin, 46px); font-weight: 900; color: var(--navy); margin: .5vmin 0 1vmin; }
 .res-score:empty { display: none; }
+
+/* ---------- Crianças / Adultos ---------- */
+.choose-grid { flex: 1; display: flex; gap: 4vmin; justify-content: center; align-items: center; padding: 4vmin; flex-wrap: wrap; }
+.choose-tile { flex: 0 1 40vmin; min-height: 40vmin; }
+.choose-tile .ti { font-size: clamp(70px, 16vmin, 150px); }
+.choose-tile .tn { font-size: clamp(26px, 5.5vmin, 48px); }
+.torre-tip { position: absolute; left: 50%; top: 38%; transform: translateX(-50%); z-index: 5; pointer-events: none;
+  background: rgba(255,255,255,.92); border-radius: 999px; padding: 8px 22px; font-weight: 900; font-size: clamp(18px, 3.4vmin, 28px);
+  animation: pulse 1.4s ease-in-out infinite; white-space: nowrap; }
+
+/* ---------- Quiz da Visão ---------- */
+.quiz { position: absolute; inset: 0; overflow-y: auto; display: flex; flex-direction: column; align-items: center; gap: 2vmin;
+  padding: 2.5vmin 4vmin 4vmin; max-width: 1100px; margin: 0 auto; }
+.quiz-top { width: 100%; display: flex; justify-content: space-between; font-weight: 900; font-size: clamp(18px, 3.2vmin, 28px); color: #00695c; }
+.quiz-bar { width: 100%; height: 12px; border-radius: 99px; background: #cfd8dc; overflow: hidden; flex: none; }
+.quiz-bar i { display: block; height: 100%; width: 100%; background: #26a69a; transition: width .1s linear; }
+.quiz-q { margin: 1vmin 0; text-align: center; font-size: clamp(22px, 4.6vmin, 42px); line-height: 1.2; }
+.quiz-opts { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 2vmin; }
+@media (orientation: portrait) { .quiz-opts { grid-template-columns: 1fr; } }
+.quiz-opt { display: flex; align-items: center; gap: 1.6vmin; text-align: left; background: #fff; color: var(--navy);
+  border-radius: 20px; padding: 2vmin 2.4vmin; font-size: clamp(18px, 3.4vmin, 30px); font-weight: 700;
+  box-shadow: 0 5px 0 #b0bec5; min-height: 10vmin; }
+.quiz-opt b { flex: none; width: 1.8em; height: 1.8em; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: #fff; }
+.quiz-opt:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 2px 0 #b0bec5; }
+.quiz-opt.right { background: #c8e6c9; box-shadow: 0 5px 0 #43a047; }
+.quiz-opt.right b { background: #43a047; }
+.quiz-opt.wrong { background: #ffcdd2; box-shadow: 0 5px 0 #e53935; }
+.quiz-opt.wrong b { background: #e53935; }
+.quiz-opt:disabled:not(.right):not(.wrong) { opacity: .55; }
+.quiz-exp { width: 100%; border-radius: 18px; padding: 1.8vmin 2.4vmin; font-size: clamp(16px, 3vmin, 26px); background: #fff; }
+.quiz-exp.good { border-left: 8px solid #43a047; }
+.quiz-exp.bad { border-left: 8px solid #e53935; }

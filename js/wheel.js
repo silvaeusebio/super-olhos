@@ -9,8 +9,8 @@ const Wheel = {
     this.prepare();
   },
 
-  // 20 fatias iguais; cada prémio recebe fatias conforme a percentagem (45/45/10 -> 9/9/2), espalhadas pela roda
-  SLICES: 20,
+  // 40 fatias iguais; cada prémio recebe fatias conforme a percentagem (25/25/25/25 -> 10/10/10/10), espalhadas pela roda
+  SLICES: 40,
   buildSlices() {
     const prizes = Store.cfg.prizes.filter(p => p.pct > 0);
     const tot = prizes.reduce((a, p) => a + p.pct, 0);
@@ -56,13 +56,13 @@ const Wheel = {
       c.font = `${Math.min(74, span * R * 0.5)}px serif`;
       c.fillText(s.p.icon, R * 0.76, 0);
       c.fillStyle = '#14213d';
-      const label = s.p.id === 'fio' ? 'Fio' : s.p.name;
-      let fs = Math.min(32, span * R * 0.2);
+      const label = s.p.short || s.p.name;
+      let fs = Math.min(32, span * R * 0.38);
       c.font = `900 ${fs}px "Trebuchet MS", sans-serif`;
       const maxW = R * 0.34;
       const w = c.measureText(label).width;
       if (w > maxW) { fs *= maxW / w; c.font = `900 ${fs}px "Trebuchet MS", sans-serif`; }
-      c.fillText(label, R * 0.5, 0);
+      c.fillText(label, R * 0.52, 0);
       c.restore();
     });
     c.restore();

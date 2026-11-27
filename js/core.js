@@ -10,17 +10,20 @@ const GAMES = [];
 
 // ---------- Guardar configuração ----------
 const DEFAULT_PRIZES = [
-  { id: 'caneta', name: 'Caneta', art: 'uma', icon: '🖊️', pct: 45, color: '#42a5f5' },
-  { id: 'porta', name: 'Porta-chaves', art: 'um', icon: '🔑', pct: 45, color: '#ffca28' },
-  { id: 'fio', name: 'Fio para óculos', art: 'um', icon: '👓', pct: 10, color: '#ec407a' },
+  { id: 'gomas', name: 'Gomas', art: 'umas', icon: '🍬', pct: 25, color: '#66bb6a' },
+  { id: 'porta', name: 'Porta-chaves', art: 'um', icon: '🔑', pct: 25, color: '#ffca28' },
+  { id: 'caneta', name: 'Caneta', art: 'uma', icon: '🖊️', pct: 25, color: '#42a5f5' },
+  { id: 'vale', name: 'Vale de desconto', short: 'Vale', art: 'um', icon: '🎟️', pct: 25, color: '#ec407a' },
 ];
+// sobe este número quando a lista de prémios muda, para ignorar percentagens antigas guardadas no tablet
+const PRIZES_VERSION = 3;
 const Store = {
   cfg: null, stats: null,
   load() {
     let c = {}, s = {};
     try { c = JSON.parse(localStorage.getItem('so_cfg') || '{}'); } catch (e) {}
     try { s = JSON.parse(localStorage.getItem('so_stats') || '{}'); } catch (e) {}
-    const pct = c.pct || {};
+    const pct = c.pv === PRIZES_VERSION ? (c.pct || {}) : {};
     this.cfg = {
       sound: c.sound !== false,
       voice: c.voice !== false,
@@ -31,7 +34,7 @@ const Store = {
   save() {
     const pct = {}; this.cfg.prizes.forEach(p => pct[p.id] = p.pct);
     try {
-      localStorage.setItem('so_cfg', JSON.stringify({ sound: this.cfg.sound, voice: this.cfg.voice, pct }));
+      localStorage.setItem('so_cfg', JSON.stringify({ sound: this.cfg.sound, voice: this.cfg.voice, pct, pv: PRIZES_VERSION }));
       localStorage.setItem('so_stats', JSON.stringify(this.stats));
     } catch (e) {}
   },
